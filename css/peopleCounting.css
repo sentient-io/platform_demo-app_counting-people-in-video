@@ -2,7 +2,32 @@ td, th {
     vertical-align: middle !important;
   }
 
-td img{
+td video{
     width: 100%;
     max-width: 200px;
+}
+
+#result-table-body{
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

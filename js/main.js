@@ -47,17 +47,43 @@ dispyCountingResult = (result) => {
 	// Render data for tables
 	let people = result.people
 	for (index in people){
-		console.log(people[index])
-		console.log(Object.keys(people[index])[0].replace(/person id: /, ''))
+		// Clean Up returned value
+		let personIdVal = Object.keys(people[index])[0]
+		let firstApperanceVal = Object.values(people[index])[0][0]
+		let durationAppearedVal = Object.values(people[index])[0][1]
+		let detectionConfVal = Object.values(people[index])[0][2]
+		let assigningConfVal = Object.values(people[index])[0][3]
+
+		// Create all required DOM elements
 		let tr = document.createElement('tr')
 		let personId = document.createElement('td')
 		let firstApperance = document.createElement('td')
-		let firstApperanceDetectionConfidence = document.createElement('div')
+		let detectionConf = document.createElement('div')
+		let firstAppearedFrame = document.createElement('td')
+		let video = document.createElement('video')
+		let videoClip = document.createElement('source')
 		let durationAppeared = document.createElement('td')
-		let durationAppearedDetectionConfidence = document.createElement('div')
+		let assigningConf = document.createElement('div')
 
-		personId.html(Object.keys(people[index])[0].replace(/person id: /, ''))
-		tr.appendChild(personId)
+		// Render values to DOM elements
+		$(personId).html(personIdVal.replace(/person id: /, ''))
+		$(firstApperance).html(firstApperanceVal.replace(/first appearance: /, ''))
+		$(durationAppeared).html(durationAppearedVal.replace(/duration appeared: /, ''))
+		Object.assign(videoClip, {
+			src: $('#uploadedVideo').attr('src')
+		})
+
+		$(video).append(videoClip)
+		$(firstAppearedFrame).append(video)
+		video.currentTime = Number(firstApperanceVal.replace(/first appearance: /, '').replace(/s/, ''))
+
+		console.log(Number(firstApperanceVal.replace(/first appearance: /, '').replace(/s/, '')))
+
+		// Append DOM elements
+		$(tr).append(personId)
+		$(tr).append(firstApperance)
+		$(tr).append(firstAppearedFrame)
+		$(tr).append(durationAppeared)
 		$('#result-table-body').append(tr)
 	}
 }
