@@ -1,0 +1,8 @@
+td, th {
+    vertical-align: middle !important;
+  }
+
+td img{
+    width: 100%;
+    max-width: 200px;
+}

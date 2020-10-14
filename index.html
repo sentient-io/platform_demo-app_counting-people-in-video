@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/peopleCounting.css">
+    <link rel="stylesheet" type="text/css" href="css/sentiestyle.css">
+
+    <!-- Import Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Singaporean politician face recognition</title>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="bg-wave-pattern" style="min-height: calc(100vh - 100px);">
+        <div class="m-auto p-md-5 p-3" style="max-width:1000px">
+
+            <!-- Popup Alert -->
+            <div class="modal fade" id="warning-popup" tabindex="-1" area-hidden="true">
+                <div class="modal-dialog d-flex" style="height:100vh">
+                    <div class="modal-content m-auto p-2">
+                        <div class="modal-header d-flex justify-content-center">
+                            <h5 class="modal-title" id="warning-title"></h5>
+                        </div>
+                        <div class="modal-bocy p-3">
+                            <p id="warning-text"> </p>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Popup Alert -->
+
+            <!-- Header Content, title and description -->
+            <div id="header-contianer" class="d-flex flex-column flex-md-row  justify-content-md-between">
+                <div id="header-container-l" class="d-flex flex-column col-md-8">
+                    <div class="mb-4 d-flex flex-row">
+                        <h4>Counting people in video</h4><span class="ml-2 p-2 badge badge-pill"
+                            style="background-color:#B71C1C; color:white; height: 28px;"><i>demo</i></span>
+                    </div>
+                    <div>
+                        <p>
+                            This demo app takes a video as input, counts total amount of people inside the vidoem,
+                            displays the appearance duration and firs appeareance time
+                        </p>
+                        <p>For demo purpose, we are limiting the file size to <b style="color: red;">10MB</b>.</p>
+                        <p>Here is a <a href="https://www.shutterstock.com/video/search/people"
+                                style="text-decoration: underline; color: #bb9968;" target="_blank">Stock Vido Site</a>
+                            where you can download some sample foorages for testing.</p>
+                    </div>
+                </div>
+                <div id="header-container-r" class="d-flex flex-row flex-md-column col-md-3 justify-content-center">
+                    <a href="#" target="_blank" class="mb-3 mx-auto d-block text-center sentie-btn-secondary"
+                        style="width: 200px;background: #f5f5f5;">
+                        More Info
+                    </a>
+                    <a href="#" target="_blank" class="mb-3 mx-auto text-center sentie-btn-primary sentie-btn-grey"
+                        style="width: 200px;">
+                        Demo App Code
+                    </a>
+                </div>
+            </div>
+            <!-- END Header Content, title and description -->
+
+            <!-- Demp App Functions-->
+            <div class="mt-5">
+
+                <!-- Video Preview and Result -->
+                <div class="d-flex flex-column justify-content-center align-items-center flex-lg-row">
+                    <!-- Video Preview -->
+                    <div id="video-preview" class="col-12 col-lg-6 d-flex justify-content-center">
+                        <video style="display:none; padding:0 !important; width: 100%;" controls></video>
+                    </div>
+
+                    <!-- Loader -->
+                    <div id="processing-info" class="col-6 text-center" style="display: none;">
+                        <img src="img/loading.gif" alt="" width="30">
+                        <p id="loading-msg" class="mt-3">Processing Video, please wait ...</p>
+                        <p id="loading-msg-1"></p>
+                    </div>
+                    <!-- -END- Loader -->
+
+                    <!-- People Counting Result -->
+                    <div id="result-container" class="col-12 col-lg-6" style="display: none;">
+
+                        <!-- Card with number component -->
+                        <div id="result-main" class="mx-auto my-4 sentie-card-num shadow-sm" style="width: 200px;">
+                            <div
+                                class="sentie-card-num-header d-flex flex-row justify-content-center align-items-center">
+                                <h6 class="m-0">Counting Result</h6>
+                                <div class="ml-2 hover-tool-tip" tabindex="0">
+                                    <span class="material-icons hover-tool-tip-ico" style="font-size: 16px;">info</span>
+                                    <div class="hover-tool-tip-content">
+                                        <p>Likelyhood of overestimation:</p>
+                                        <p id="overestimationLikelyhood" class="font-weight-bolder">76.0%</p>
+                                        <hr style="border-color: white;">
+                                        <p>Likelyhood of underestimation:</p>
+                                        <p id="underestimationLikelyHood" class="m-0 font-weight-bolder">77%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 id="result-people-counter" class="sentie-card-num-content">11 People</h5>
+                        </div>
+                        <!-- -END- Card with number component -->
+
+                        <div id="result-table">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Person ID</th>
+                                        <th scope="col">First Appearance</th>
+                                        <th scope="col">First Appeared Frame</th>
+                                        <th scope="col">Duration Appeared</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="result-table-body">
+                                    <tr class="">
+                                        <td>001</td>
+                                        <td>1.7s
+                                            <span class="material-icons" style="font-size: 18px">
+                                                info
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <img src="img/testimg.png" alt="">
+                                        </td>
+                                        <td>7.7s
+                                            <span class="material-icons" style="font-size: 18px">
+                                                info
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- -END- People Counting Result -->
+
+                </div>
+                <!-- -END- Video Preview and Result -->
+
+                <!-- Video Uploader -->
+                <!-- Uploader drag drop box -->
+                <div class="mx-auto mt-4 p-3" id="video-uploader">
+                    <form class="text-center">
+                        <i class="mb-3 material-icons">cloud_upload</i>
+                        <h5>Drag and drop video here</h5>
+                        <p>(Max file size : 10MB)</p>
+                        <p>or</p>
+                        <input type="file" accept="video/*" id="video-uploader-input"
+                            onchange="uploadVideo(this.files)">
+                        <label class="px-3 sentie-btn-primary sentie-btn-green" for="video-uploader-input">Upload a
+                            Video</label>
+                    </form>
+                </div>
+                <!-- -END- Video Uploader -->
+
+                <!-- Action Buttons -->
+                <div class="mt-5">
+                    <div class="d-flex flex-row justify-content-center">
+                        <button onclick="handlePeopleCounting()"
+                            class="mb-1 mx-auto text-center sentie-btn-primary sentie-btn-green" style="display: none;"
+                            id="btn-countPeople">Count People In Video</button>
+                    </div>
+                </div>
+                <!-- END Action Buttons -->
+
+            </div>
+            <!--END Demp App Functions  -->
+
+        </div>
+    </div>
+    <!-- END Main Container -->
+
+    <!-- Footer -->
+    <footer class="shadow-lg" style="background-color:white">
+        <div class="mx-auto pt-5 pb-3 d-flex flex-column justify-content-center flex-lg-row" style="max-width: 1000px;">
+            <div class="col-12 col-lg-8">
+                <div class="text-center text-lg-left">
+                    <p>
+                        Designed and built by Sentient.io with the help of our contributors.
+                    </p>
+                    <p>
+                        App version: 1.0.0 | Source code for app available
+                        <a href="https://github.com/sentient-io/platform-demo_apps-image-narration" target="_blank"
+                            style="color:#bb9968">
+                            here
+                        </a>
+                        .
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <img src="img/sentient-logo.png" alt="Sentient.io logo" class="m-auto d-block"
+                    style="max-width: 280px;">
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+
+    <!-- jQuery(Google) first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <!-- Stores API Key -->
+    <script src="app.js"></script>
+
+
+    <script src="js/videoUploader.js"></script>
+    <script src="js/peopleCounting.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+
+</html>
