@@ -64,6 +64,6 @@ uploadVideo= (files) => {
             $(video).show().append(source)
         };
 		$('#video-uploader').hide()
-		$('#btn-countPeople').show()
+		$('#btn-countPeople, #btn-cancel').show()
 	}
 };

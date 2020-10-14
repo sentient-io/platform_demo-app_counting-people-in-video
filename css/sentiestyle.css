@@ -1,3 +1,13 @@
+/* Css Property Ordering
+{
+	- Display
+	- Positioning
+	- Box Model
+	- Colors and Typography
+	- Other
+}
+*/
+
 /***************************************/
 /* Import Nunito Sans font from google */
 /***************************************/
@@ -78,8 +88,15 @@ a, a:hover{
 	border: 1px solid #424242;
 }
 
-.sentie-btn-secondary:hover{
+.sentie-btn-secondary:hover {
 	filter: brightness(.9);
+}
+
+.sentie-btn-cancel {
+	position: absolute;
+	border: none;
+	background-color: rgba(0, 0, 0, 0.0);
+	color: #9e9e9e;
 }
 
 /*************************/
@@ -129,6 +146,10 @@ a, a:hover{
 /************************/
 /* Hover toggle tooltip */
 /************************/
+.hover-tool-tip {
+	display: inline-block;
+}
+
 .hover-tool-tip .hover-tool-tip-content{
 font-size: 14px;
 padding: 16px;
@@ -139,11 +160,13 @@ left: 50%;
 backdrop-filter: blur(2px);
 background-color: rgba(0, 0, 0, 0.7);
 cursor: pointer;
+color: white;
 }
 
 .hover-tool-tip:hover .hover-tool-tip-content,
 .hover-tool-tip:focus .hover-tool-tip-content{
 	display: block;
+	z-index: 99;
 	}
 
 /***********************/

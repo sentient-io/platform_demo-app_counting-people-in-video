@@ -22,7 +22,7 @@
 <body>
     <!-- Main Container -->
     <div class="bg-wave-pattern" style="min-height: calc(100vh - 100px);">
-        <div class="m-auto p-md-5 p-3" style="max-width:1000px">
+        <div class="m-auto p-md-5 p-3" style="max-width:1200px">
 
             <!-- Popup Alert -->
             <div class="modal fade" id="warning-popup" tabindex="-1" area-hidden="true">
@@ -54,7 +54,7 @@
                             This demo app takes a video as input, counts total amount of people inside the vidoem,
                             displays the appearance duration and firs appeareance time
                         </p>
-                        <p>For demo purpose, we are limiting the file size to <b style="color: red;">10MB</b>.</p>
+                        <p>For demo purpose, we are limiting the file size to <b style="font-weight: 800;">10MB</b>.</p>
                         <p>Here is a <a href="https://www.shutterstock.com/video/search/people"
                                 style="text-decoration: underline; color: #bb9968;" target="_blank">Stock Video Site</a>
                             where you can download some sample footages for testing.</p>
@@ -74,17 +74,17 @@
             <!-- END Header Content, title and description -->
 
             <!-- Demp App Functions-->
-            <div class="mt-5">
+            <div class="mx-auto mt-5 col-lg-8 col-xl-12">
 
                 <!-- Video Preview and Result -->
-                <div class="d-flex flex-column justify-content-center align-items-center flex-lg-row">
+                <div class="d-flex flex-column justify-content-center align-items-center flex-xl-row">
                     <!-- Video Preview -->
-                    <div id="video-preview" class="col-12 col-lg-6 d-flex justify-content-center">
+                    <div id="video-preview" class="col-12 col-xl-6 d-flex flex-column justify-content-center">
                         <video style="display:none; padding:0 !important; width: 100%;" controls></video>
                     </div>
 
                     <!-- Loader -->
-                    <div id="processing-info" class="col-6 text-center" style="display: none;">
+                    <div id="processing-info" class="mt-5 col-12 col-xl-6 text-center" style="display: none;">
                         <img src="img/loading.gif" alt="" width="30">
                         <p id="loading-msg" class="mt-3">Processing Video, please wait ...</p>
                         <p id="loading-msg-1"></p>
@@ -92,10 +92,10 @@
                     <!-- -END- Loader -->
 
                     <!-- People Counting Result -->
-                    <div id="result-container" class="col-12 col-lg-6" style="display: none;">
+                    <div id="result-container" class="col-12 col-xl-6" style="display: none;">
 
                         <!-- Card with number component -->
-                        <div id="result-main" class="mx-auto my-4 sentie-card-num shadow-sm" style="width: 200px;">
+                        <div id="result-main" class="mx-auto my-4 sentie-card-num shadow-sm" style="width: 300px;">
                             <div
                                 class="sentie-card-num-header d-flex flex-row justify-content-center align-items-center">
                                 <h6 class="m-0">Counting Result</h6>
@@ -114,14 +114,14 @@
                         </div>
                         <!-- -END- Card with number component -->
 
-                        <div id="result-table">
-                            <table class="table text-center">
+                        <div id="result-table" class="pr-1">
+                            <table class="">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Person ID</th>
-                                        <th scope="col">First Appearance</th>
-                                        <th scope="col">First Appeared Frame</th>
-                                        <th scope="col">Duration Appeared</th>
+                                        <th>Person ID</th>
+                                        <th>First Appearance</th>
+                                        <th>First Appeared Frame</th>
+                                        <th>Duration Appeared</th>
                                     </tr>
                                 </thead>
                                 <tbody id="result-table-body">
@@ -168,10 +168,15 @@
 
                 <!-- Action Buttons -->
                 <div class="mt-5">
-                    <div class="d-flex flex-row justify-content-center">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <button onclick="handleCancel()" class="sentie-btn-cancel" style="display: none; left:0;"
+                            id="btn-cancel"> Cancel </button>
                         <button onclick="handlePeopleCounting()"
                             class="mb-1 mx-auto text-center sentie-btn-primary sentie-btn-green" style="display: none;"
                             id="btn-countPeople">Count People In Video</button>
+                        <button onclick="handleRestart()"
+                            class="mb-1 mx-auto text-center sentie-btn-primary sentie-btn-green"
+                            style="display: none !important;" id="btn-restart"> Restart </button>
                     </div>
                 </div>
                 <!-- END Action Buttons -->
@@ -225,7 +230,11 @@
     <script src="js/videoUploader.js"></script>
     <script src="js/peopleCounting.js"></script>
     <script src="js/main.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 
 
