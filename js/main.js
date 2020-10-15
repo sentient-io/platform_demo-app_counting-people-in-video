@@ -18,11 +18,11 @@ handlePeopleCounting = () => {
 
 		// Change text while processing data
 		let processingMsg = [
-			'We are trying hrad to process video <br> Longer video may takes longer to load',
+			'We are trying hard to process video <br> Longer video may takes longer to load',
 			'We are still processing your video ... ',
 			'Did you know? Sentient.io has a demo app to recognize face!',
 			'At Sentient.io we have more than 50 microservices to make your system intelligent.',
-			"You can go to our api documentation platfrom to see the complete detail of all Sentient.io's microservices",
+			"You can go to our api documentation platform to see the complete detail of all Sentient.io's microservices",
 			'Did you know? Sentient.io provide corporate solution as well as trying to help individual developers to use AI easily',
 			"Thanks for waiting, we are still processing your vidoe, it's almost there!",
 		];
