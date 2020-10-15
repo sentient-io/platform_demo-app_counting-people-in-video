@@ -21,7 +21,7 @@
 
 <body>
     <!-- Main Container -->
-    <div class="bg-wave-pattern" style="min-height: calc(100vh - 100px);">
+    <div class="pb-5 bg-wave-pattern" style="min-height: calc(100vh - 100px);">
         <div class="m-auto p-md-5 p-3" style="max-width:1200px">
 
             <!-- Popup Alert -->
@@ -51,8 +51,8 @@
                     </div>
                     <div>
                         <p>
-                            This demo app takes a video as input, counts total amount of people inside the vidoem,
-                            displays the appearance duration and firs appeareance time
+                            This demo app takes a video as input, counts total amount of people inside the video,
+                            the result will contains total amount of people in the video, first appearance of each person, as well as a image clip when the person first appeared.
                         </p>
                         <p>For demo purpose, we are limiting the file size to <b style="font-weight: 800;">10MB</b>.</p>
                         <p>Here is a <a href="https://www.shutterstock.com/video/search/people"
@@ -60,7 +60,7 @@
                             where you can download some sample footages for testing.</p>
                     </div>
                 </div>
-                <div id="header-container-r" class="d-flex flex-row flex-md-column col-md-3 justify-content-center">
+                <div id="header-container-r" class="d-flex flex-row flex-md-column col-md-3 justify-content-center demo-app-btn-container">
                     <a href="#" target="_blank" class="mb-3 mx-auto d-block text-center sentie-btn-secondary"
                         style="width: 200px;background: #f5f5f5;">
                         More Info
@@ -136,7 +136,7 @@
 
                 <!-- Video Uploader -->
                 <!-- Uploader drag drop box -->
-                <div class="mx-auto mt-4 p-3" id="video-uploader">
+                <div class="mx-auto my-4 p-3" id="video-uploader">
                     <form class="text-center">
                         <i class="mb-3 material-icons">cloud_upload</i>
                         <h5>Drag and drop video here</h5>
@@ -151,15 +151,15 @@
                 <!-- -END- Video Uploader -->
 
                 <!-- Action Buttons -->
-                <div class="mt-5">
-                    <div class="d-flex flex-row justify-content-center align-items-center">
+                <div class="">
+                    <div class="d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
                         <button onclick="handleCancel()" class="sentie-btn-cancel" style="display: none; left:0;"
                             id="btn-cancel"> Cancel </button>
                         <button onclick="handlePeopleCounting()"
-                            class="mb-1 mx-auto text-center sentie-btn-primary sentie-btn-green" style="display: none;"
+                            class="my-5 mx-auto text-center sentie-btn-primary sentie-btn-green" style="display: none;"
                             id="btn-countPeople">Count People In Video</button>
                         <button onclick="handleRestart()"
-                            class="mb-1 mx-auto text-center sentie-btn-primary sentie-btn-green"
+                            class="my-5  mx-auto text-center sentie-btn-primary sentie-btn-green"
                             style="display: none !important;" id="btn-restart"> Restart </button>
                     </div>
                 </div>
@@ -183,10 +183,7 @@
                     <p>
                         App version: 1.0.0 | Source code for app available
                         <a href="https://github.com/sentient-io/platform-demo_apps-image-narration" target="_blank"
-                            style="color:#bb9968">
-                            here
-                        </a>
-                        .
+                            style="color:#bb9968">here</a>.
                     </p>
                 </div>
             </div>
