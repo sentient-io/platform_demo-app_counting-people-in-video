@@ -18,13 +18,14 @@ handlePeopleCounting = () => {
 
 		// Change text while processing data
 		let processingMsg = [
-			'We are trying hrad to process video <br> Longer video may takes longer to load',
-			'We are still processing your video ... ',
-			'Did you know? Sentient.io has a demo app to recognize face!',
-			'At Sentient.io we have more than 50 microservices to make your system intelligent.',
-			"You can go to our api documentation platfrom to see the complete detail of all Sentient.io's microservices",
-			'Did you know? Sentient.io provide corporate solution as well as trying to help individual developers to use AI easily',
-			"Thanks for waiting, we are still processing your vidoe, it's almost there!",
+			'Just a moment more, running calculations on your video...',
+			'You can buy and sell data securely on Sentient.io’s blockchain network.',
+			'Use utility microservices to save time during your app development.',
+			'Have a microservice you\'re looking for but can\'t find? Write in to us <a style="text-decoration:underline"  href = "mailto: enquiry@sentient.io">enquiry@sentient.io</a>',
+			"Need help with implementing the APIs? Click the 'Help' button at the bottom of the screen to reach out to our support team.",
+			'The APIs on our platform are curated carefully to ensure reliability for deployment',
+			'Usage discounts are automatically applied as the number of API calls made reaches the next tier',
+			'Just a moment more, running calculations on your video...'
 		];
 
 		let msgIndex = 0;
@@ -91,15 +92,15 @@ dispyCountingResult = (result) => {
 		let icon = document.createElement('span');
 		icon.innerHTML = 'info';
 		icon.setAttribute('class', 'ml-1 material-icons hover-tool-tip-ico');
-		icon.setAttribute('style',"color: #757575; font-size:16px")
-		let confContent = document.createElement('div');
-		confContent.setAttribute('style','display:inline')
-		confContent.setAttribute('href', '#')
-		confContent.setAttribute('data-toggle', 'tooltip')
-		confContent.setAttribute('title', `${assigningConfVal}, ${detectionConfVal}`)
+		icon.setAttribute('style', 'color: #757575; font-size:16px');
+		//let confContent = document.createElement('div');
+		//confContent.setAttribute('style','display:inline')
+		//confContent.setAttribute('href', '#')
+		//confContent.setAttribute('data-toggle', 'tooltip')
+		//confContent.setAttribute('title', `${assigningConfVal}, ${detectionConfVal}`)
 
-		$(personId).append(confContent);
-		$(confContent).append(icon);
+		//$(personId).append(confContent);
+		//$(confContent).append(icon);
 		//$(confContent).html(detectionConfVal + assigningConfVal);
 
 		// Append DOM elements

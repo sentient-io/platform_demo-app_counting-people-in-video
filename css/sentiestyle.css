@@ -72,6 +72,7 @@ a, a:hover{
 }
 
 .sentie-btn-primary {
+	min-width: 160px;
 	padding: 0.5rem;
 	color: white;
 	border-radius: 8px;
@@ -93,10 +94,12 @@ a, a:hover{
 }
 
 .sentie-btn-cancel {
-	position: absolute;
+	position: relative;
 	border: none;
 	background-color: rgba(0, 0, 0, 0.0);
 	color: #9e9e9e;
+	text-decoration: underline;
+	font-style: italic;
 }
 
 @media (max-width: 490px) {
