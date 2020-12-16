@@ -1,0 +1,438 @@
+/* +-------------------------------------+ */
+/* | Import Nunito Sans font from google | */
+/* +-------------------------------------+ */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+html {
+	font-size: 16px;
+}
+
+i,
+button {
+	font-weight: 400;
+}
+
+button:focus {
+	outline: none !important;
+}
+
+h2 {
+	font-weight: 800;
+}
+
+h5 {
+	font-weight: 700;
+}
+
+a,
+a:hover {
+	color: #424242;
+	text-decoration: none;
+}
+
+.underline {
+	text-decoration: underline !important;
+}
+
+/* Background */
+.s-bg-wave {
+	background: #f5f5f5 url('../img/bg-waveline.png') no-repeat center bottom;
+	background-size: 100%;
+}
+
+/* +---------+ */
+/* | Buttons | */
+/* +---------+ */
+.s-btn {
+	min-width: 160px;
+	padding: 0.5rem;
+	border: 2px solid;
+	border-radius: 8px;
+	color: white;
+	font-weight: 300;
+	cursor: pointer;
+}
+
+.s-btn:disabled {
+	color: #bdbdbd;
+	border-color: #e0e0e0;
+	background-color: #e0e0e0;
+	cursor: not-allowed;
+}
+
+.s-btn-green {
+	border: 1px solid #8eaf04;
+	background-color: #8eaf04;
+}
+
+.s-btn-grey {
+	border: 1px solid #424242;
+	background-color: #424242;
+}
+
+.sentie-btn-grey:hover {
+	filter: brightness(1.4) !important;
+}
+
+.s-btn-primary {
+	min-width: 160px;
+	padding: 0.5rem;
+	border-radius: 8px;
+	color: white !important;
+	font-weight: 300 !important;
+	cursor: pointer;
+}
+
+.s-btn-primary:hover {
+	filter: brightness(1.1);
+}
+
+.s-btn-secondary {
+	min-width: 160px;
+	padding: 0.5rem;
+	border: 1px solid #424242;
+	border-radius: 8px;
+}
+
+.s-btn-secondary:hover {
+	filter: brightness(0.9);
+}
+
+.s-btn-cancel {
+	border: none;
+	color: #9e9e9e;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.s-btn-cancel:hover {
+	color: #424242;
+}
+
+/* Override material icons reansition delay */
+.material-icons {
+	transition: all 0s;
+}
+
+@media (max-width: 490px) {
+	/* Stack More Info button and Demo App Code button vertically */
+	.demo-app-btn-container {
+		flex-direction: column !important;
+	}
+}
+
+/* +--------------+ */
+/* |  Scroll Bar  | */
+/* +--------------+ */
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* +-----------+ */
+/* |  Corners  | */
+/* +-----------+ */
+.s-rounded-bottom-lg {
+	border-radius: 0 0 0.3rem 0.3rem !important;
+}
+.s-rounded-top-lg {
+	border-radius: 0.3rem 0.3rem 0 0 !important;
+}
+
+/* +----------+ */
+/* |  Cursor  | */
+/* +----------+ */
+.cursor-pointer {
+	cursor: pointer;
+}
+
+/* +--------------------+ */
+/* | Full Screen Loader | */
+/* +--------------------+ */
+.s-full-screen-loader {
+	position: fixed;
+	z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(2px);
+}
+
+/* +----------------+ */
+/* |  Radio Button  | */
+/* +----------------+ */
+.s-radio {
+	cursor: pointer;
+}
+
+.s-radio-base {
+	position: relative;
+	top: 4px;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: #8eaf04 solid 2px;
+	border-radius: 99px;
+	background-color: white;
+}
+
+.s-radio-selected {
+	width: 14px;
+	height: 14px;
+	border: white solid 2px;
+	border-radius: 99px;
+	background-color: #8eaf04;
+}
+
+.s-radio-text {
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* +------------------------+ */
+/* |  Img & Video Uploader  | */
+/* +------------------------+ */
+#s-img-uploader,
+#s-video-uploader {
+	border: 2px dashed #ccc;
+	border-radius: 16px;
+	background: rgba(142, 175, 4, 0);
+}
+#s-img-uploader i,
+#s-video-uploader i {
+	font-size: 35px;
+	color: #bb9968;
+	opacity: 30%;
+}
+#s-img-uploader input,
+#s-video-uploader input {
+	display: none;
+}
+/*.highlight will be added when user drag file above uploader area*/
+#s-img-uploader.highlight,
+#s-video-uploader.highlight {
+	border-color: #8eaf04;
+	background: rgba(142, 175, 4, 0.05);
+}
+#s-img-uploader.highlight i,
+#s-video-uploader.highlight i {
+	opacity: 100%;
+}
+#s-img-preview img,
+#s-img-preview canvas,
+#s-video-preview video {
+	max-width: 800px;
+	width: 100%;
+	margin: auto;
+	display: block;
+	box-sizing: border-box;
+	border: 10px white solid;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+#s-img-preview canvas {
+	max-width: 100%;
+	height: auto;
+}
+
+/* +---------------------------+ */
+/* |  People Counting Demo App | */
+/* +---------------------------+ */
+#video-uploader {
+	border-right: solid 1px grey;
+}
+
+@media (max-width: 767px) {
+	#video-uploader {
+		border-right: none;
+		border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+		padding-bottom: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+
+#video-1 #video-1-preview,
+#video-2 #video-2-preview {
+	width: 100%;
+	max-width: 170px;
+	border-radius: 8px;
+	border: 4px solid #e7e7e7;
+	filter: brightness(0.85);
+}
+
+#video-2-preview img,
+#video-1-preview img {
+	width: 100%;
+	border-radius: 3px;
+}
+
+.testing-video-btn {
+	padding-top: 4px;
+	margin: 0;
+	color: #797979;
+	background-color: #e7e7e7;
+}
+
+.selected .testing-video-btn {
+	font-weight: 600;
+}
+
+#video-1 #video-1-preview:hover,
+#video-2 #video-2-preview:hover {
+	cursor: pointer;
+	filter: brightness(0.8);
+}
+
+.selected #video-1-preview,
+.selected #video-2-preview {
+	filter: brightness(1) !important;
+}
+
+.test-video-loader {
+	color: #757575;
+}
+
+.test-video-loader img {
+	width: 18px;
+	height: 18px;
+	margin-right: 16px;
+}
+
+/* Icons in video preview */
+#video-1-preview .material-icons,
+#video-2-preview .material-icons {
+	font-size: 45px;
+	color: #ffffff;
+	position: absolute;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+#result-table {
+	overflow-y: auto;
+	max-height: 450px;
+	text-align: center;
+}
+#result-table thead th {
+	position: sticky;
+	top: 0;
+}
+
+td video,
+td img {
+	width: 100%;
+	max-width: 160px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th,
+td {
+	vertical-align: middle !important;
+	font-size: 14px;
+	padding: 8px;
+}
+
+th {
+	background: #424242;
+	color: white;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	font-size: 13px;
+}
+
+tbody tr {
+	height: 140px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+@media (max-width: 580px) {
+	tbody tr {
+		height: calc(15vw);
+	}
+}
+
+@media (min-width: 1200px) {
+	tbody tr {
+		height: 80px;
+	}
+}
+
+/******************************/
+/* Card With Number Component */
+/******************************/
+.sentie-card-num {
+	border-radius: 8px;
+	text-align: center;
+}
+.s-card-title {
+	margin: 0px;
+	padding: 8px;
+	background-color: #230a59;
+	color: white;
+	border-radius: 8px 8px 0px 0px;
+}
+.s-card-data {
+	margin: 0px;
+	padding: 16px;
+	background-color: white;
+	border-radius: 0px 0px 8px 8px;
+}
+
+/************************/
+/* Hover toggle tooltip */
+/************************/
+.hover-tool-tip {
+	display: inline-block;
+}
+
+.hover-tool-tip .hover-tool-tip-content {
+	font-size: 14px;
+	padding: 16px;
+	display: none;
+	border-radius: 4px;
+	position: absolute;
+	left: 50%;
+	backdrop-filter: blur(2px);
+	background-color: rgba(0, 0, 0, 0.7);
+	cursor: pointer;
+	color: white;
+}
+
+.hover-tool-tip:hover .hover-tool-tip-content,
+.hover-tool-tip:focus .hover-tool-tip-content {
+	display: block;
+	z-index: 99;
+}

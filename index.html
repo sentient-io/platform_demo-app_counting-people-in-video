@@ -6,35 +6,55 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" type="image/svg" href="img/Sentient-io_fav.svg"/>
+    <link rel="icon" type="image/svg" href="img/Sentient-io_fav.svg" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/peopleCounting.css">
-    <link rel="stylesheet" type="text/css" href="css/sentiestyle.css">
+    <link rel="stylesheet" type="text/css" href="css/demoapps.css">
+    <link rel="stylesheet" tyep="text/css" href="css/s-color.css">
 
     <!-- Import Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Import Fontawsome -->
+    <link rel="stylesheet" href="fontawsome/css/all.css">
 
     <title>Count People in Video</title>
 </head>
 
 <body>
-    <!-- Main Container -->
-    <div class="pb-5 bg-wave-pattern" style="min-height: calc(100vh - 100px);">
-        <div class="m-auto p-md-5 p-3" style="max-width:1200px">
+    <!-- +--------------------+ -->
+    <!-- | Full Screen Loader | -->
+    <!-- +--------------------+ -->
+    <!-- Place Loader right after body tag, above eveything else -->
 
-            <!-- Popup Alert -->
-            <div class="modal fade" id="warning-popup" tabindex="-1" area-hidden="true">
+    <div id="loader" style="display:none;">
+        <div class="align-items-center d-flex flex-column justify-content-center s-full-screen-loader">
+            <img src="img/sentie-loader.gif" width="180px" height="auto" alt="">
+            <p>Processing ... </p>
+            <p id="loader-text" class="mx-5" style="max-width: 500px; text-align: center;"></p>
+        </div>
+    </div>
+    <!-- -END- Full Screen Loader -->
+
+    <!-- +---------------+ -->
+    <!-- | Main Container| -->
+    <!-- +---------------+ -->
+    <div class="pb-5 s-bg-wave" style="min-height: calc(100vh - 100px);">
+        <div class="m-auto p-md-5 p-3" style="max-width:1200px">
+            <!-- +--------------------+ -->
+            <!-- | Alert Popup Window | -->
+            <!-- +--------------------+ -->
+            <div class="modal fade" id="alert" tabindex="-1" area-hidden="true">
                 <div class="modal-dialog d-flex" style="height:100vh">
                     <div class="modal-content m-auto p-2">
                         <div class="modal-header d-flex justify-content-center">
-                            <h5 class="modal-title" id="warning-title"></h5>
+                            <h5 class="modal-title" id="alertTitle"></h5>
                         </div>
-                        <div class="modal-bocy p-3">
-                            <p id="warning-text"> </p>
+                        <div class="modal-body p-3">
+                            <p id="alertContent"></p>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -42,159 +62,259 @@
                     </div>
                 </div>
             </div>
-            <!-- END Popup Alert -->
+            <!-- -END- Alert Popup Window -->
 
-            <!-- Header Content, title and description -->
+            <!-- +------------------+ -->
+            <!-- | Demo Apps Header | -->
+            <!-- +------------------+ -->
             <div id="header-contianer" class="d-flex flex-column flex-md-row  justify-content-md-between">
                 <div id="header-container-l" class="d-flex flex-column col-md-8">
-                    <div class="mb-4 d-flex flex-row">
+                    <div class="d-flex flex-row">
                         <h4>Count People in Video</h4><span class="ml-2 p-2 badge badge-pill"
                             style="background-color:#B71C1C; color:white; height: 28px;"><i>DEMO</i></span>
                     </div>
                     <div>
                         <p>
-                            This demo app takes in a video input and counts the total amount of distinct people within the video. The result will show the total amount of people in the video, the first appearance of each person, as well as a still image frame of when the person first appeared.
+                            This demo app takes in a video input and counts the total amount of distinct people within
+                            the video. The result will show the total amount of people in the video, the first
+                            appearance of each person, as well as a still image frame of when the person first appeared.
                         </p>
-                        <p>Do note the 10 MB file size limit. <!--<b style="font-weight: 800;">10MB</b>.--></p>
-                        <p>Here is a <a href="https://www.shutterstock.com/video/search/people"
-                                style="text-decoration: underline; color: #bb9968;" target="_blank">Stock Video Site</a>
-                            where you can download some sample footages for testing.</p>
+                        <p>To start test, please <b class="s-text-sentient-beige">upload a
+                                video</b> or use <b class="s-text-sentient-green ">provided videos</b> . <br>If you
+                            choose to upload
+                            your own video, do note the 10 MB file size limit.
+                            <!--<b style="font-weight: 800;">10MB</b>.-->
+                        </p>
                     </div>
                 </div>
-                <div id="header-container-r" class="d-flex flex-row flex-md-column col-md-3 justify-content-center demo-app-btn-container">
-                    <a href="https://platform.sentient.io/demoapps_detail#count_people" target="_blank" class="mb-3 mx-auto d-block text-center sentie-btn-secondary"
+                <div id="header-container-r"
+                    class="d-flex flex-row flex-md-column col-md-3 justify-content-center demo-app-btn-container">
+                    <a href="https://platform.sentient.io/demoapps_detail#count_people" target="_blank"
+                        class="mb-3 mx-auto d-block text-center s-btn-secondary"
                         style="width: 200px;background: #f5f5f5;">
                         More Info
                     </a>
-                    <a href="https://github.com/sentient-io/platform_demo-app_counting-people-in-video" target="_blank" class="mb-3 mx-auto text-center sentie-btn-primary sentie-btn-grey"
-                        style="width: 200px;">
+                    <a href="https://github.com/sentient-io/platform_demo-app_counting-people-in-video" target="_blank"
+                        class="mb-3 mx-auto text-center s-btn-primary s-btn-grey" style="width: 200px;">
                         Demo App Code
                     </a>
                 </div>
             </div>
-            <!-- END Header Content, title and description -->
+            <!-- -END- Header Content, title and description -->
 
-            <!-- Demp App Functions-->
-            <div class="mx-auto mt-5 col-lg-8 col-xl-12">
+            <!-- Demp App Container -->
+            <div style="min-height: 50vh;" class="d-flex justify-content-center align-items-center">
 
-                <!-- Video Preview and Result -->
-                <div class="d-flex flex-column justify-content-center align-items-center flex-xl-row">
-                    <!-- Video Preview -->
-                    <div id="video-preview" class="col-12 col-xl-6 d-flex flex-column justify-content-center">
-                        <video style="display:none; padding:0 !important; width: 100%;" controls></video>
-                    </div>
+                <div class="p-3 d-flex flex-column" style="height: 100%;">
 
-                    <!-- Loader -->
-                    <div id="processing-info" class="mt-5 col-12 col-xl-6 text-center" style="display: none;">
-                        <img src="img/loading.gif" alt="" width="30">
-                        <p id="loading-msg" class="mt-3">Processing Video, please wait...</p>
-                        <p id="loading-msg-1"></p>
-                    </div>
-                    <!-- -END- Loader -->
 
-                    <!-- People Counting Result -->
-                    <div id="result-container" class="col-12 col-xl-6" style="display: none;">
+                    <!-- Add class "col-lg-6" to below div for result display -->
+                    <div id="functionsContianer" class="col-12 d-flex justify-content-center">
+                        <!-- +------------------------------+ -->
+                        <!-- | Demo APP Functions Goes Here | -->
+                        <!-- +------------------------------+ -->
 
-                        <!-- Card with number component -->
-                        <div id="result-main" class="mx-auto my-4 sentie-card-num shadow-sm" style="width: 300px;">
-                            <div
-                                class="sentie-card-num-header d-flex flex-row justify-content-center align-items-center">
-                                <h6 class="m-0">Counting Result</h6>
-                                <div class="ml-2 hover-tool-tip" tabindex="0">
-                                    <span class="material-icons hover-tool-tip-ico" style="font-size: 16px;">info</span>
-                                    <div class="hover-tool-tip-content">
-                                        <p>Likelyhood of overestimation:</p>
-                                        <p id="overestimationLikelyhood" class="font-weight-bolder">76.0%</p>
-                                        <hr style="border-color: white;">
-                                        <p>Likelyhood of underestimation:</p>
-                                        <p id="underestimationLikelyHood" class="m-0 font-weight-bolder">77%</p>
+                        <div id="video-selection-container" style="max-width: 800px;" class="col-12">
+
+                            <div class="d-flex row align-items-center">
+
+                                <div id="video-uploader" class="col-12 col-md-6">
+                                    <!-- +----------------+ -->
+                                    <!-- | Video Uploader | -->
+                                    <!-- +----------------+ -->
+                                    <!-- Uploader drag drop box -->
+                                    <div id="s-video-uploader" class="my-3 my-md-0 d-flex align-items-center justify-content-center" style="height: 130px;">
+                                        <form class="text-center">
+                                            <div class="d-flex justify-content-center align-items-center row">
+                                                <i class="mr-3 material-icons">cloud_upload</i>
+                                                <div class="">
+                                                    <b>Drag and drop video here, or</b>
+                                                </div>
+                                            </div>
+                                            <input type="file" accept="video/*" id="s-video-uploader-input"
+                                                onchange="uploadVideo(this.files)">
+                                            <label class="s-btn-primary s-bg-sentient-beige" style="padding: 2px;"
+                                                for="s-video-uploader-input">Upload a
+                                                Video</label>
+
+                                            <div>
+                                                <small class="d-block mb-0 mt-2 text-center">More test videos
+                                                    <a href="https://pixabay.com/videos/search/people/"
+                                                        class="underline s-text-sentient-beige"
+                                                        target="_blank">here</a></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- | -END- Video Uploader | -->
+
+                                </div>
+
+                                <div id="video-1" class="col-6 col-md-3 text-center">
+                                    <div class="test-video-loader">
+                                        <img src="img/loading.gif" alt="">
+                                        <p>Loading test video 1 ...</p>
+                                    </div>
+                                    <div id='video-1-preview' style="display: none;margin: auto;"
+                                        onclick="selectPreviewVideo('video-1')">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <span class="material-icons">
+                                                play_circle_outline
+                                            </span>
+                                            <img src="img/video-1.jpg" alt="">
+                                        </div>
+
+                                        <p class="testing-video-btn">Test Video 1</p>
                                     </div>
                                 </div>
+
+                                <div id="video-2" class="col-6 col-md-3 text-center">
+                                    <div class="test-video-loader">
+                                        <img src="img/loading.gif" alt="">
+                                        <p>Loading test video 2 ...</p>
+                                    </div>
+                                    <div id='video-2-preview' style="display: none;margin: auto;"
+                                        onclick="selectPreviewVideo('video-2')">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <span class="material-icons">
+                                                play_circle_outline
+                                            </span>
+                                            <img src="img/video-2.jpg" alt="">
+                                        </div>
+                                        <p class="testing-video-btn">Test Video 2</p>
+                                    </div>
+                                </div>
+
+
                             </div>
-                            <h5 id="result-people-counter" class="sentie-card-num-content">11 People</h5>
-                        </div>
-                        <!-- -END- Card with number component -->
 
-                        <div id="result-table" class="pr-1">
-                            <table class="">
-                                <thead>
-                                    <tr>
-                                        <th>Person ID</th>
-                                        <th>First Appearance</th>
-                                        <th>First Appeared Frame</th>
-                                        <th>Duration Appeared</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="result-table-body">
-                                </tbody>
-                            </table>
                         </div>
                     </div>
-                    <!-- -END- People Counting Result -->
 
-                </div>
-                <!-- -END- Video Preview and Result -->
+                    <div id="to-start-test" class="mt-5 col-12 text-center s-text-grey-5">
 
-                <!-- Video Uploader -->
-                <!-- Uploader drag drop box -->
-                <div class="mx-auto my-4 p-3" id="video-uploader">
-                    <form class="text-center">
-                        <i class="mb-3 material-icons">cloud_upload</i>
-                        <h5>Drag and drop video here</h5>
-                        <p>(Max file size : 10MB)</p>
-                        <p>or</p>
-                        <input type="file" accept="video/*" id="video-uploader-input"
-                            onchange="uploadVideo(this.files)">
-                        <label class="px-3 sentie-btn-primary sentie-btn-green" for="video-uploader-input">Upload a
-                            Video</label>
-                    </form>
-                </div>
-                <!-- -END- Video Uploader -->
+                    </div>
 
-                <!-- Action Buttons -->
-                <div class="m-auto" style="max-width: 800px;">
-                    <div class="d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
-                        <button onclick="handleCancel()" class="sentie-btn-cancel" style="display: none; left:0;"
-                            id="btn-cancel"> Cancel </button>
-                        <button onclick="handlePeopleCounting()"
-                            class="my-5 mx-auto text-center sentie-btn-primary sentie-btn-green" style="display: none;"
-                            id="btn-countPeople">Analyze Video</button>
-                        <button onclick="handleRestart()"
-                            class="my-5  mx-auto text-center sentie-btn-primary sentie-btn-green"
-                            style="display: none !important;" id="btn-restart"> Restart </button>
+                    <div id="video-preview-and-result"
+                        class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                        <!-- +---------------+ -->
+                        <!-- | Video Preview | -->
+                        <!-- +---------------+ -->
+                        <div id="s-video-preview" class="mt-4 col-12">
+
+                        </div>
+                        <!-- -END- Video Preview -->
+
+                        <div id="resultContainer" class="col-12 col-lg-6" style="display:none">
+                            <!-- +-----------------------------+ -->
+                            <!-- |  Demo APP Results Goes Here | -->
+                            <!-- +-----------------------------+ -->
+
+                            <!-- Card with number component -->
+                            <div id="result-main" class="mx-auto my-4 sentie-card-num shadow-sm" style="width: 300px;">
+                                <div class="s-card-title d-flex flex-row justify-content-center align-items-center">
+                                    <h6 class="m-0">Counting Result</h6>
+                                    <div class="ml-2 hover-tool-tip" tabindex="0">
+                                        <span class="material-icons hover-tool-tip-ico"
+                                            style="font-size: 16px;">info</span>
+                                        <div class="hover-tool-tip-content">
+                                            <p>Likelyhood of overestimation:</p>
+                                            <p id="overEstim" class="font-weight-bolder">-</p>
+                                            <hr style="border-color: white;">
+                                            <p>Likelyhood of underestimation:</p>
+                                            <p id="underEstim" class="m-0 font-weight-bolder">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 id="people-count" class="s-card-data">- People</h5>
+                            </div>
+                            <!-- -END- Card with number component -->
+
+                            <!-- Table of people counting result -->
+                            <div id="result-table" class="pr-1">
+                                <table class="">
+                                    <thead>
+                                        <tr>
+                                            <th>Person ID</th>
+                                            <th>First Appearance</th>
+                                            <th id="first-appeared-frame">First Appeared Frame</th>
+                                            <th>Duration Appeared</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- -END- Table of people counting result -->
+                        </div>
+
+
+
                     </div>
                 </div>
-                <!-- END Action Buttons -->
-
             </div>
-            <!--END Demp App Functions  -->
+
+            <!-- +--------------------+ -->
+            <!-- |  Demo APP Controls | -->
+            <!-- +--------------------+ -->
+            <div class="m-auto pt-4 d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center"
+                style="max-width: 600px;">
+                <div class="col-3 text-center">
+                    <button id="btn-cancel" class="mb-4 s-btn-cancel" style="display: none" onclick="handleCancel()">
+                        Cancel </button>
+                </div>
+                <div class="col-6 text-center">
+                    <button id="mainFunction" class="mb-4 mx-auto text-center s-btn-primary s-btn-green"
+                        onclick="useAnalyseVideo()" style="display: none;">Analyze Video</button>
+                    <button id="btn-restart" class="mb-4  mx-auto text-center s-btn-primary s-btn-green"
+                        style="display: none !important;" onclick="handleRestart()"> Restart </button>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <!-- -END- Demo App Controls -->
+            <!-- -END- Demp App Container  -->
 
         </div>
+        <!-- Back button to all demo app -->
+        <div class="mt-3 d-flex justify-content-center">
+            <a href="https://platform.sentient.io/demoapps" target="_top">
+                <button class="d-flex row align-items-center s-btn-cancel">
+                    <span class="material-icons mr-2 ">arrow_back</span>
+                    All Demo Apps
+                </button>
+            </a>
+        </div>
     </div>
-    <!-- END Main Container -->
+    <!-- -END- Main Container -->
 
-    <!-- Footer -->
+    <!-- +--------+ -->
+    <!-- | Footer | -->
+    <!-- +--------+ -->
     <footer class="shadow-lg" style="background-color:white">
         <div class="mx-auto pt-5 pb-3 d-flex flex-column justify-content-center flex-lg-row" style="max-width: 1000px;">
             <div class="col-12 col-lg-8">
                 <div class="text-center text-lg-left">
                     <p>
-                        Designed and built by Sentient.io with the help of our contributors.
+                        Designed and built by <a href="https://www.sentient.io/" target="_blank"
+                            style="color:#bb9968">Sentient.io</a> with the help of our contributors.
                     </p>
                     <p>
-                        App version: 1.0.0 | Source code for app available
+                        App version: 1.2.0 | Source code for app available
                         <a href="https://github.com/sentient-io/platform_demo-app_counting-people-in-video" target="_blank"
                             style="color:#bb9968">here</a>.
                     </p>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-                <img src="img/sentient-logo.png" alt="Sentient.io logo" class="m-auto d-block"
-                    style="max-width: 280px;">
+                <a href="https://www.sentient.io/" target="_blank">
+                    <img src="img/sentient-logo.png" alt="Sentient.io logo" class="m-auto d-block"
+                        style="max-width:280px">
+                </a>
             </div>
         </div>
     </footer>
-    <!-- End footer -->
+    <!-- -End- footer -->
+
 
     <!-- jQuery(Google) first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -206,18 +326,17 @@
         crossorigin="anonymous"></script>
 
     <!-- Stores API Key -->
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 
+    <script src="js/videoUploader.js" defer></script>
+    <script src="js/loader.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/peopleCounting.js" defer></script>
 
-    <script src="js/videoUploader.js"></script>
-    <script src="js/peopleCounting.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+    <!-- Load testing video (video been converted to base 64 string) -->
+    <script src="video/business-people-enter-meeting-room.js" defer></script>
+    <script src="video/group-of-people-running.js" defer></script>
+
 </body>
-
 
 </html>
