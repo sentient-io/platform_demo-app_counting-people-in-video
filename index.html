@@ -22,6 +22,14 @@
     <link rel="stylesheet" href="fontawsome/css/all.css">
 
     <title>Count People in Video</title>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149661706-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-149661706-1');
+	</script>
 </head>
 
 <body>
@@ -38,11 +46,11 @@
         </div>
     </div>
     <!-- -END- Full Screen Loader -->
-
+<div class="content">
     <!-- +---------------+ -->
     <!-- | Main Container| -->
     <!-- +---------------+ -->
-    <div class="pb-5 s-bg-wave" style="min-height: calc(100vh - 100px);">
+    <div class="pb-5 s-bg-wave flex-fill">
         <div class="m-auto p-md-5 p-3" style="max-width:1200px">
             <!-- +--------------------+ -->
             <!-- | Alert Popup Window | -->
@@ -89,7 +97,7 @@
                 </div>
                 <div id="header-container-r"
                     class="d-flex flex-row flex-md-column col-md-3 justify-content-center demo-app-btn-container">
-                    <a href="https://platform.sentient.io/demoapps_detail#count_people" target="_blank"
+                    <a href="https://platform.sentient.io/demoapps_detail/count_people" target="_blank"
                         class="mb-3 mx-auto d-block text-center s-btn-secondary"
                         style="width: 200px;background: #f5f5f5;">
                         More Info
@@ -291,7 +299,7 @@
     <!-- | Footer | -->
     <!-- +--------+ -->
     <footer class="shadow-lg" style="background-color:white">
-        <div class="mx-auto pt-5 pb-3 d-flex flex-column justify-content-center flex-lg-row" style="max-width: 1000px;">
+        <div class="mx-auto pt-30 pb-3 d-flex flex-column justify-content-center flex-lg-row" style="max-width: 1000px;">
             <div class="col-12 col-lg-8">
                 <div class="text-center text-lg-left">
                     <p>
@@ -314,7 +322,7 @@
         </div>
     </footer>
     <!-- -End- footer -->
-
+</div>
 
     <!-- jQuery(Google) first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
